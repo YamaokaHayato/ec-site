@@ -1,0 +1,12 @@
+spring:
+ datasource:
+  url: jdbc:mysql://localhost:3307/mysql
+  username: root
+  password: root
+  driverClassName: com.mysql.jdbc.Driver
+mybatis:
+ configuration-properties:
+  dbschema: schemaname
+server:
+ servlet:
+  context-path: /ec-site
