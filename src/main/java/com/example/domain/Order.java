@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
-
 /**
  * 注文情報を表すドメイン.
  * 
@@ -12,7 +11,7 @@ import java.util.List;
  *
  */
 public class Order {
-	
+
 	/** 注文ID */
 	private Integer id;
 	/** ユーザーID */
@@ -153,7 +152,7 @@ public class Order {
 	public void setOrderItemList(List<OrderItem> orderItemList) {
 		this.orderItemList = orderItemList;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", userId=" + userId + ", status=" + status + ", totalPrice=" + totalPrice
@@ -163,4 +162,23 @@ public class Order {
 				+ ", paymentMethod=" + paymentMethod + ", user=" + user + ", orderItemList=" + orderItemList + "]";
 	}
 
+	// 最終的な税込み価格
+	public int getCalcTotalPrice() {
+
+		int totalPrice = 0;
+		List<OrderItem> orderItemList = this.orderItemList;
+		for (OrderItem orderItem : orderItemList) {
+			totalPrice += orderItem.getSubTotal();
+			System.out.println(orderItem);
+		}
+
+		totalPrice *= 1.1;
+		return totalPrice;
+	}
+
+	public int getTax() {
+		int tax = this.getCalcTotalPrice() / 11;
+		return tax;
+
+	}
 }
