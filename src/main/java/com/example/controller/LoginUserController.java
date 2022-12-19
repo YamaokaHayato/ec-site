@@ -32,14 +32,12 @@ public class LoginUserController {
 	
 	@PostMapping("/login")
 	public String login(LoginUserForm form, Model model) {
-		System.out.println("/loginnikimsdita");
 		User user = loginUserService.login(form.getEmail(), form.getPassword());
 		if(user == null) {
 			model.addAttribute("errorMessage", "メールアドレス、またはパスワードが間違っています。");
 			return toLogin(form);
 		}
 		session.setAttribute("user", user);
-		System.out.println("qqqqqq");
 		return "redirect:/";
 	}
 

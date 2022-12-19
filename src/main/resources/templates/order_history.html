@@ -50,14 +50,17 @@
 				</div>
 			</div>
 		</div>
-	</header>
+	</header>　
 	<div class="top-wrapper">
 		<div class="container">
-			<h1 class="page-title">ショッピングカート</h1>
+			<h1 class="page-title">注文履歴</h1>
 			<!-- table -->
-			<div th:if="${order == null}" th:text="${noOrder}"></div>
-			<div th:unless="${order == null}">
-				<div class="row">
+			<hr th:if="${orderListOne}!=null">
+			<div th:if="${orderListOne}!=null" style="font-size:20px; background-color: rgb(223,235,232);" class="container">未入金</div>
+				<div class="row" th:if="${orderListOne}" th:each="order:${orderListOne}">
+				<hr>
+				<div th:text="${'注文日：'+order.orderDate}"></div>
+				<div th:text="'ご注文合計金額：'+${#number.formatInteger(orede.getCalcTatalPrice,1,'COMMA')}+'円'">ご注文合計金額</div>
 					<table class="striped">
 						<thead>
 							<tr>

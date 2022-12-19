@@ -20,7 +20,6 @@ public class ShowItemDetailController {
 	public String showDetail(Integer id, Model model) {
 		Item item = showItemDetailService.detailByItem(id);
 		model.addAttribute("item", item);
-		System.out.println(item);
 		return "item_detail";
 	}
 	

@@ -1,0 +1,51 @@
+package com.example.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.domain.Order;
+import com.example.domain.User;
+import com.example.service.OrderHistoryService;
+
+import jakarta.servlet.http.HttpSession;
+
+/**
+ * 注文履歴情報を操作するコントローラー.
+ * 
+ * @author yamaokahayato
+ *
+ */
+@Controller
+@RequestMapping("/orderHistory")
+public class OrderHistoryController {
+	
+//	@Autowired
+//	private OrderHistoryService orderHistoryService;
+//	
+//	@Autowired
+//	private HttpSession session;
+//	
+//	public String showHistrory(Model model) {
+//		try {
+//			User user = (User) session.getAttribute("user");
+//			List<Order> finOrderList = orderHistoryService.showHistoryOfStatusFour(user.getId());
+//			model.addAttribute("finOrderList", finOrderList);
+//			List<Order> orderListThree = orderHistoryService.showHistoryOfStatusThree(user.getId());
+//			model.addAttribute("orderListThree", orderListThree);
+//			List<Order> orderListTwo = orderHistoryService.showHistoryOfStatusTwo(user.getId());
+//			model.addAttribute("orderListTwo", orderListTwo);
+//			List<Order> orderListOne = orderHistoryService.showHistoryOfStatusOne(user.getId());
+//			model.addAttribute("orderListOne", orderListOne);
+//		} catch (NullPointerException e) {
+//			session.setAttribute("toOrderHistory", true);
+//			return "login";
+//		}
+//		
+//		return "order_history";
+//	}
+
+}

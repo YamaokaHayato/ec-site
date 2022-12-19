@@ -32,7 +32,7 @@
 		<div class="container">
 			<div class="header">
 				<div class="header-left">
-					<a href="top.html"> <img class="logo"
+					<a href="top.html" th:href="@{/}"> <img class="logo"
 						th:src="@{/img/header_logo.png}" />
 					</a>
 				</div>
@@ -59,14 +59,14 @@
 						<div class="row"></div>
 						<div class="row">
 							<div class="input-field col s12">
-								<i class="material-icons prefix">mail_outline</i> <input
+								<i class="material-icons prefix"></i> <input
 									class="validate" id="mailAddress" type="email" name="email" />
 								<label for="mailAddress" data-error="wrong" data-success="right">メールアドレス</label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="input-field col s12">
-								<i class="material-icons prefix">lock_outline</i> <input
+								<i class="material-icons prefix"></i> <input
 									id="password" type="password" name="password" /> <label
 									for="password">パスワード</label>
 							</div>

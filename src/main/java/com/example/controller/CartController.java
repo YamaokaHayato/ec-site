@@ -60,7 +60,6 @@ public class CartController {
 		} else {
 			userId = user.getId();
 		}
-		System.out.println(form);
 		cartService.addItem(form, userId);
 		return "redirect:/cart/showCart";
 	}

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja" xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 <!--Import Google Icon Font-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -33,7 +32,7 @@
 			<div class="header">
 				<div class="header-left">
 					<a href="top.html" th:href="@{/}"> <img class="logo"
-						th:src="@{/img_aloha/header_logo.png}" />
+						th:src="@{/img/header_logo.png}" />
 					</a>
 				</div>
 
@@ -60,7 +59,7 @@
 				<div class="row">
 					<div class="row item-detail">
 						<div class="item-icon">
-							<img th:src="@{/img/1.jpg}" />
+							<img th:src="@{/img/}+${item.imagePath}" />
 						</div>
 						<div class="item-intro">
 							ハワイで取れる名産物でかつオーガニックな食料がふんだんに使われたローカルフーズです。健康志向の方に大人気の商品です。</div>
@@ -68,21 +67,19 @@
 					<div class="row item-size">
 						<div class="item-hedding">サイズ</div>
 						<div>
-									<input type="hidden" id="priceM" th:value="${item.priceM}">
-									<input type="hidden" id="priceL" th:value="${item.priceL}">
+							<input type="hidden" id="priceM" th:value="${item.priceM}">
+							<input type="hidden" id="priceL" th:value="${item.priceL}">
 							<label> <input id="size-m" name="size" type="radio"
-								class="size" checked="checked" value="M" /> <span> &nbsp;<span
-									class="price">Ｍ</span><span
-									th:text="${#numbers.formatInteger(item.priceM, 0, 'COMMA')}" 
-									>
-									&nbsp;&nbsp;1,380円(税抜)</span>円
+								class="size" checked="checked" value="M" /> <span>
+									&nbsp;<span class="price">Ｍ</span><span
+									th:text="${#numbers.formatInteger(item.priceM, 0, 'COMMA')}">
+										&nbsp;&nbsp;1,380円(税抜)</span>円
 							</span>
 							</label> <label> <input id="size-l" name="size" type="radio"
 								value="L" class="size" /> <span> &nbsp;<span
 									class="price">Ｌ</span><span
-									th:text="${#numbers.formatInteger(item.priceL, 0, 'COMMA')}"
-									>
-									&nbsp;&nbsp;2,380円(税抜)</span>円
+									th:text="${#numbers.formatInteger(item.priceL, 0, 'COMMA')}">
+										&nbsp;&nbsp;2,380円(税抜)</span>円
 							</span>
 							</label>
 						</div>
@@ -93,12 +90,12 @@
 							<span>&nbsp;Ｌ</span><span>&nbsp;&nbsp;300円(税抜)</span>
 						</div>
 						<div>
-						<span id="topping">
-							<label class="item-topping"
+							<span id="topping"> <label class="item-topping"
 								th:each="topping : ${item.toppingList}"> <input
-								type="checkbox" class="checkbox" name="toppingList" th:value="${topping.id}"
-								 /> <span th:text="${topping.name}">ハワイアンソルト</span>
-							
+									type="checkbox" class="checkbox" name="toppingList"
+									th:value="${topping.id}" /> <span
+									th:text="${topping.name}">ハワイアンソルト</span>
+
 							</label>
 							</span>
 						</div>
@@ -131,7 +128,7 @@
 					</div>
 					<div class="row item-cart-btn">
 						<button class="btn" type="submit">
-							<i class="material-icons left">add_shopping_cart</i> <span>カートに入れる</span>
+							<i class="material-icons left"></i> <span>カートに入れる</span>
 						</button>
 					</div>
 				</div>

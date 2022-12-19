@@ -31,7 +31,8 @@
 		<div class="container">
 			<div class="header">
 				<div class="header-left">
-					<a href="top.html"> <img class="logo" th:src="@{/img/header_logo.png}" />
+					<a href="top.html" th:href="@{/}"> <img class="logo"
+						th:src="@{/img/header_logo.png}" />
 					</a>
 				</div>
 
@@ -73,22 +74,22 @@
 								</div> <span th:text="${orderItem.item.name}">ハワイアンパラダイス</span>
 							</td>
 							<td><span class="price" th:text="${orderItem.size}">&nbsp;Ｌ</span>
-								<span th:if="${orderItem.size.compareTo('M') == 0}"
+								<span th:if="${orderItem.size == 'M'}"
 								th:text="${orderItem.item.priceM + '円'}">&nbsp;&nbsp;2,380円</span>
-								<span th:if="${orderItem.size.compareTo('L') == 0}"
+								<span th:if="${orderItem.size == 'L'}"
 								th:text="${orderItem.item.priceL + '円'}"></span> <span
 								th:text="${orderItem.quantity + '個'}">&nbsp;&nbsp;1個</span></td>
 							<td>
 								<ul>
-									<li th:if="${orderItem.size.compareTo('M') == 0}"
+									<li th:if="${orderItem.size == 'M'}"
 										th:each="orderTopping : ${orderItem.orderToppingList}"
 										th:text="${orderTopping.topping.name + '200円'}">ピーマン300円</li>
-									<li th:if="${orderItem.size.compareTo('L')  == 0}"
+									<li th:if="${orderItem.size == 'L'}"
 										th:each="orderTopping : ${orderItem.orderToppingList}"
 										th:text="${orderTopping.topping.name + '300円'}">オニオン300円</li>
 								</ul>
 							</td>
-							<td><div class="text-center">3,280円</div></td>
+							<td><div class="text-center" th:text="'小計　'+${#numbers.formatInteger(orderItem.getSubTotal,1,'COMMA')}+' 円'">3,280円</div></td>
 						</tr>
 
 					</tbody>
@@ -96,8 +97,8 @@
 			</div>
 
 			<div class="row cart-total-price">
-				<div>消費税：8,000円</div>
-				<div>ご注文金額合計：38,000円 (税込)</div>
+				<div th:text="'消費税 '+${#numbers.formatInteger(order.getTax,1,'COMMA')}+' 円'">消費税：8,000円</div>
+				<div th:text="'ご注文合計金額 '+${#numbers.formatInteger(order.getCalcTotalPrice,1,'COMMA')}+' 円'">ご注文金額合計：38,000円 (税込)</div>
 			</div>
 
 			<h2 class="page-title">お届け先情報</h2>
@@ -108,24 +109,29 @@
 					<div class="row">
 						<div class="input-field">
 							<div th:errors="*{destinationName}"
-								style="color: red; text-align: center;" th:field="*{destinationName}"></div>
-							<input id="name" type="text" name="destinationName" /> <label for="name">お名前</label>
+								style="color: red; text-align: center;"
+								th:field="*{destinationName}"></div>
+							<input id="name" type="text" name="destinationName" /> <label
+								for="name">お名前</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field">
 							<div th:errors="*{destinationEmail}"
-								style="color: red; text-align: center;" th:field="*{destinationEmail}"></div>
-							<input id="email" type="email" name="destinationEmail" /> <label for="email">メールアドレス</label>
+								style="color: red; text-align: center;"
+								th:field="*{destinationEmail}"></div>
+							<input id="email" type="email" name="destinationEmail" /> <label
+								for="email">メールアドレス</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field">
 							<div th:errors="*{destinationZipcode}"
-								style="color:red; text-align:center;" th:field="*{destinationZipcode}"></div>
-							<input id="zipcode" type="text" maxlength="8" name="destinationZipcode" /> <label
-								for="zipcode">郵便番号</label>
-							<button class="btn" type="button">
+								style="color: red; text-align: center;"
+								th:field="*{destinationZipcode}"></div>
+							<input id="zipcode" type="text" maxlength="8"
+								name="destinationZipcode" /> <label for="zipcode">郵便番号</label>
+							<button class="btn" type="button" id="zipcode_btn">
 								<span>住所検索</span>
 							</button>
 						</div>
@@ -133,22 +139,27 @@
 					<div class="row">
 						<div class="input-field">
 							<div th:errors="*{destinationAddress}"
-								style="color: red; text-align: center;" th:field="*{destinationAddress}"></div>
-							<input id="address" type="text" name="destinationAddress" /> <label for="address">住所</label>
+								style="color: red; text-align: center;"
+								th:field="*{destinationAddress}"></div>
+							<input id="address" type="text" name="destinationAddress" /> <label
+								for="address">住所</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field">
 							<div th:errors="*{destinationTel}"
-								style="color: red; text-align: center;" th:field="*{destinationTel}"></div>
-							<input id="tel" type="tel" name="destinationTel" /> <label for="tel">電話番号</label>
+								style="color: red; text-align: center;"
+								th:field="*{destinationTel}"></div>
+							<input id="tel" type="tel" name="destinationTel" /> <label
+								for="tel">電話番号</label>
 						</div>
 					</div>
 					<div class="row order-confirm-delivery-datetime">
 						<div class="input-field">
 							<div th:text="${deliveryDateError}"
 								style="color: red; text-align: center;"></div>
-							<input id="deliveryDate" type="date" name="deliveryDate" /> <label for="address">配達日時</label>
+							<input id="deliveryDate" type="date" name="deliveryDate" /> <label
+								for="address">配達日時</label>
 						</div>
 						<label class="order-confirm-delivery-time"> <input
 							name="deliveryTime" type="radio" value="10時" checked="checked" />
@@ -203,5 +214,7 @@
 	<!-- Compiled and minified JavaScript -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
+	<script th:src="@{/js/get_address.js}"></script>
 </body>
 </html>

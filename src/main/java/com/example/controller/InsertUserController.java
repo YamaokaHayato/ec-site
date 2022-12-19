@@ -2,6 +2,7 @@ package com.example.controller;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -20,7 +21,6 @@ public class InsertUserController {
 	@Autowired
 	private InsertUserService insertUserService;
 	
-	
 	@GetMapping("/toInsert")
 	public String toInsert(InsertUserForm form) {
 		return "register_admin";
@@ -32,10 +32,12 @@ public class InsertUserController {
 		if(insertUserService.findByEmail(form.getEmail()) != null) {
 			result.rejectValue("email", null, "そのメールアドレスは既に登録されています");
 		}
+		
 		if(!form.getPassword().equals(form.getConfimationPassword())) {
 			result.rejectValue("confimationPassword", null, "");
 		}
 		
+		System.out.println(form.toString());
 		if(result.hasErrors()) {
 			return toInsert(form);
 		}
