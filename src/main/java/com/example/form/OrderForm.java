@@ -6,6 +6,12 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
+/**
+ * 注文情報のパラメータを受け取るフォーム.
+ * 
+ * @author yamaokahayato
+ *
+ */
 public class OrderForm {
 	
 	/** ID */

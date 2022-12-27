@@ -4,6 +4,12 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
+/**
+ * ユーザー登録のパラメータを受け取るフォーム.
+ * 
+ * @author yamaokahayato
+ *
+ */
 public class InsertUserForm {
 
 	@NotBlank(message="姓を入力してください")

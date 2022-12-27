@@ -22,6 +22,12 @@ public class ShowItemListService {
 	@Autowired
 	private ItemRepository itemRepository;
 	
+	/**
+	 * 名前から商品を検索する.
+	 * 
+	 * @param name
+	 * @return 商品情報リスト
+	 */
 	public List<Item> serchByName(String name) {
 		if(name == null) {
 			List<Item> itemList = itemRepository.findAll();

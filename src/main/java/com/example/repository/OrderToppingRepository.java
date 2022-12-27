@@ -11,6 +11,12 @@ import org.springframework.stereotype.Repository;
 import com.example.domain.OrderItem;
 import com.example.domain.OrderTopping;
 
+/**
+ * OrderToppingを操作するリポジトリ.
+ * 
+ * @author yamaokahayato
+ *
+ */
 @Repository
 public class OrderToppingRepository {
 	
@@ -25,15 +31,25 @@ public class OrderToppingRepository {
 		return orderTopping;
 	};
 	
+	/**
+	 * orderToppingを1件登録する.
+	 * 
+	 * @param orderTopping 
+	 */
 	public void insert(OrderTopping orderTopping) {
 		
-		System.out.println("orderTopping = "+orderTopping);
+		System.out.println("orderTopping = " +orderTopping);
 		
 		SqlParameterSource param = new BeanPropertySqlParameterSource(orderTopping);
 		String sql = "INSERT INTO order_toppings (topping_id,order_item_id) VALUES (:toppingId, :orderItemId)";
 		template.update(sql, param); 
 	}
 	
+	/**
+	 * OrderItemIdを元に該当するOrderToppingを削除する.
+	 * 
+	 * @param orderItemId
+	 */
 	public void deleteById(Integer orderItemId) {
 		String sql = "DELETE FROM order_toppings WHERE order_item_id = :orderItemId ;";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("orderItemId", orderItemId);

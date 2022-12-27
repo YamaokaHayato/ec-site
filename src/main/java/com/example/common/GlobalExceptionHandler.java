@@ -8,6 +8,12 @@ import org.springframework.web.servlet.ModelAndView;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+/**
+ * ECサイト内で例外をキャッチしエラーページへ遷移させる.
+ * 
+ * @author yamaokahayato
+ *
+ */
 public class GlobalExceptionHandler implements HandlerExceptionResolver {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionHandler.class);

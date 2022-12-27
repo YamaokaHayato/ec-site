@@ -38,6 +38,12 @@ public class ItemRepository {
 		return itemList;
 	}
 	
+	/**
+	 * 商品名を検索
+	 * 
+	 * @param name 商品名
+	 * @return 商品一覧
+	 */
 	public List<Item> findbyName(String name) {
 		String sql = "SELECT id, name, description, price_m, price_l, image_path FROM items WHERE name LIKE :name ORDER BY price_m;";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("name", "%" + name + "%");
@@ -45,6 +51,12 @@ public class ItemRepository {
 		return itemList;
 	}
 	
+	/**
+	 * 1件の商品情報を検索
+	 * 
+	 * @param id 商品ID
+	 * @return 商品詳細情報
+	 */
 	public Item load(Integer id) {
 		String sql = "SELECT id, name, image_path, price_m, price_l ,description FROM items WHERE id = :id";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);

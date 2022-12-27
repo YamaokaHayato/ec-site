@@ -1,5 +1,11 @@
 package com.example.form;
 
+/**
+ * ログイン情報のパラメーターを受け取るフォーム.
+ * 
+ * @author yamaokahayato
+ *
+ */
 public class LoginUserForm {
 
 	private String email;

@@ -11,6 +11,12 @@ import com.example.domain.Topping;
 import com.example.repository.ItemRepository;
 import com.example.repository.ToppingRepository;
 
+/**
+ * 商品詳細画面を操作するサービス.
+ * 
+ * @author yamaokahayato
+ *
+ */
 @Service
 @Transactional
 public class ShowItemDetailService {
@@ -20,6 +26,12 @@ public class ShowItemDetailService {
 	@Autowired
 	private ToppingRepository toppingRepository;
 	
+	/**
+	 * IDから商品情報を検索する
+	 * 
+	 * @param id　商品ID
+	 * @return　商品情報
+	 */
 	public Item detailByItem(Integer id) {
 		Item item = itemRepository.load(id);
 		List<Topping> toppingList = toppingRepository.findAll();

@@ -18,6 +18,12 @@ import com.example.repository.ToppingRepository;
 
 import jakarta.servlet.http.HttpSession;
 
+/**
+ * ショッピングカートを操作するサービス.
+ * 
+ * @author yamaokahayato
+ *
+ */
 @Service
 @Transactional
 public class CartService {
@@ -37,6 +43,12 @@ public class CartService {
 	@Autowired
 	private HttpSession session;
 	
+	/**
+	 * カートの中身を表示する.
+	 * 
+	 * @param useId
+	 * @return Orderリスト
+	 */
 	public Order showCartList(Integer useId) {
 		Order existorder = orderRepository.findByUserIdAndStatus(useId, 0);
 		if(existorder == null) {
@@ -46,6 +58,12 @@ public class CartService {
 		return order;
 	}
 	
+	/**
+	 * ショッピングカートに商品を追加する.
+	 * 
+	 * @param form CartForm
+	 * @param userId 
+	 */
 	public void addItem(CartForm form, Integer userId) {
 		Order order = orderRepository.findByUserIdAndStatus(userId,0);
 		
@@ -86,6 +104,11 @@ public class CartService {
 		}
 	}
 	
+	/**
+	 * 該当するorderIdを検索し、OrderItemを削除する.
+	 * 
+	 * @param orderItemId 注文商品ID
+	 */
 	public void deleteOrderItem(Integer orderItemId) {
 		orderItemRepository.deleteById(orderItemId);
 		orderToppingRepository.deleteById(orderItemId);

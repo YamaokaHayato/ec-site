@@ -13,6 +13,12 @@ import com.example.service.LoginUserService;
 
 import jakarta.servlet.http.HttpSession;
 
+/**
+ * ログイン画面の処理を行うコントローラー.
+ * 
+ * @author yamaokahayato
+ *
+ */
 @Controller
 @RequestMapping("/loginUser")
 public class LoginUserController {
@@ -23,13 +29,24 @@ public class LoginUserController {
 	@Autowired
 	private HttpSession session;
 	
+	/**
+	 * ログイン画面に遷移.
+	 * 
+	 * @param form LoginUserForm
+	 * @return ログイン画面
+	 */
 	@GetMapping("/toLogin")
 	public String toLogin(LoginUserForm form) {
-		System.out.println("AAAAAAAAAA/loginnikimsdita");
-
 		return "login";
 	}
 	
+	/**
+	 * ログインを行う.
+	 * 
+	 * @param form LoginUserForm
+	 * @param model Model
+	 * @return
+	 */
 	@PostMapping("/login")
 	public String login(LoginUserForm form, Model model) {
 		User user = loginUserService.login(form.getEmail(), form.getPassword());

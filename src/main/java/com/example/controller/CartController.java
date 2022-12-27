@@ -14,6 +14,12 @@ import com.example.service.CartService;
 
 import jakarta.servlet.http.HttpSession;
 
+/**
+ * カート情報を操作するコントローラー.
+ * 
+ * @author yamaokahayato
+ *
+ */
 @Controller
 @RequestMapping("/cart")
 public class CartController {
@@ -50,6 +56,12 @@ public class CartController {
 		return "cart_list";
 	}
 	
+	/**
+	 * 選択された注文商品を登録する.
+	 * 
+	 * @param form　CartForm
+	 * @return　商品一覧ページ
+	 */
 	@PostMapping("/orderItemInsert")
 	public String OrderItemInsert(CartForm form) {
 		User user = (User) session.getAttribute("user");

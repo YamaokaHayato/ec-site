@@ -60,12 +60,24 @@ public class OrderController {
 		return "order_confirm";
 	}
 	
+	/**
+	 * @param orderForm
+	 * @param model
+	 * @return
+	 */
 	@PostMapping("/autoEntry")
 	public String destination(OrderForm orderForm, Model model) {
 		model.addAttribute("autoEntry", "autoEntry");
 		return toOrder(orderForm, model);
 	}
 	
+	/**
+	 * 注文する.
+	 * 
+	 * @param orderForm OrderForm
+	 * @param model Model
+	 * @return 注文完了画面にリダイレクト
+	 */
 	@PostMapping("/comfirmedOrder")
 	public String comfirmedOrder(@Validated OrderForm orderForm, BindingResult result, Model model) {
 		if (orderForm.getDeliveryDate() == null) {

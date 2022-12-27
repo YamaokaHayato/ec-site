@@ -14,6 +14,12 @@ import com.example.domain.User;
 import com.example.form.InsertUserForm;
 import com.example.service.InsertUserService;
 
+/**
+ * ユーザー登録処理を行うコントローラー.
+ * 
+ * @author yamaokahayato
+ *
+ */
 @Controller
 @RequestMapping("/insertUser")
 public class InsertUserController {
@@ -21,11 +27,23 @@ public class InsertUserController {
 	@Autowired
 	private InsertUserService insertUserService;
 	
+	/**
+	 * ユーザー登録画面に遷移.
+	 * 
+	 * @param form InsertUserForm
+	 * @return　ユーザー登録画面
+	 */
 	@GetMapping("/toInsert")
 	public String toInsert(InsertUserForm form) {
 		return "register_admin";
 	}
 	
+	/**
+	 * ユーザー情報の登録を行う.
+	 * 
+	 * @param form InsertUserForm
+	 * @return ログイン画面
+	 */
 	@PostMapping("/insert")
 	public String insert(@Validated InsertUserForm form, BindingResult result) {
 
@@ -49,6 +67,11 @@ public class InsertUserController {
 		return "redirect:/insertUser/login";
 	}
 	
+	/**
+	 * ログイン画面に遷移.
+	 * 
+	 * @return ログイン画面
+	 */
 	@GetMapping("/login")
 	public String toLogin() {
 		return "login";

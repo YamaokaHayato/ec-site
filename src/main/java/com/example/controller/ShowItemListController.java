@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.domain.Item;
 import com.example.service.ShowItemListService;
 
+/**
+ * 商品一覧ページを処理するコントローラー.
+ * 
+ * @author yamaokahayato
+ *
+ */
 @Controller
 @RequestMapping("/")
 public class ShowItemListController {
@@ -18,9 +24,11 @@ public class ShowItemListController {
 	private ShowItemListService showItemListService;
 
 	/**
-	 * @param model    モデル
+	 * 商品一覧ページの表示.
+	 * 
+	 * @param model    Model
 	 * @param itemName 商品一覧
-	 * @return 商品情報
+	 * @return 商品一覧ページ
 	 */
 	@RequestMapping("/")
 	public String showList(Model model, String name) {

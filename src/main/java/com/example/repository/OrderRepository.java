@@ -206,6 +206,9 @@ public class OrderRepository {
 		return orderList;
 	}
 
+	/**
+	 * @param order
+	 */
 	public void update2(Order order) {
 		SqlParameterSource param = new BeanPropertySqlParameterSource(order);
 		StringBuilder updateSqlBuilder = new StringBuilder("UPDATE orders ");
@@ -219,6 +222,12 @@ public class OrderRepository {
 		template.update(updateSqlBuilder.toString(), param);
 	}
 
+	/**
+	 * OrderIDを条件にOrderリストを返す
+	 * 
+	 * @param orderId
+	 * @return　rderリスト
+	 */
 	public Order load(Integer orderId) {
 		String sql = "SELECT \n"
 				+ "o.id o_id,o.user_id o_user_id,o.status o_status,o.total_price o_total_price,o.order_date o_order_date,o.destination_name o_destination_name, o.destination_email o_destination_email, o.destination_zipcode o_destination_zipcode, o.destination_address o_destination_address, \n"

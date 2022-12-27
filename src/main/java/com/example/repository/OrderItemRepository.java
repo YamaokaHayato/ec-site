@@ -15,6 +15,8 @@ import org.springframework.stereotype.Repository;
 import com.example.domain.OrderItem;
 
 /**
+ * OrderItemを操作するリポジトリ.
+ * 
  * @author yamaokahayato
  *
  */
@@ -63,6 +65,11 @@ public class OrderItemRepository {
 		return orderItemList.get(0);
 	}
 	
+	/**
+	 * トッピングを含めた注文情報を1件削除する
+	 * 
+	 * @param orderItemId 注文情報ID
+	 */
 	public void deleteById(Integer orderItemId) {
 		String sql = "DELETE FROM order_items WHERE id=:orderItemId";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("orderItemId", orderItemId);
